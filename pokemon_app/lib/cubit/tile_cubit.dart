@@ -12,15 +12,17 @@ class TileCubit extends Cubit<TileState> {
     //https://pokeapi.co/api/v2/pokemon
 
     String type = '';
+    String photo = '';
     if ((type = await repo.getItemsLocal(name)) != '') {
       emit(TileLoaded(name, type));
       return;
     }
 
-    type = await repo.getPokeTypeApi(name);
+    [type, photo] = await repo.getPokeTypeApi(name);
 
     if (type != '') {
-      repo.saveItemsLocal(PokeModel(name: name, type: type));
+      repo.saveItemsLocal(
+          PokeModel(name: name, type: type, lat: 0, lng: 0, photo: photo));
       emit(TileLoaded(name, type));
       return;
     }

@@ -29,10 +29,8 @@ class InitialScreen extends StatelessWidget {
                 style:
                     ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
                 onPressed: () => moveToMain(context),
-                child: Text(
-                  AppLocalizations.of(context)!.hopIn,
-                  style: TextStyle(color: Colors.black),
-                ),
+                child: Text(AppLocalizations.of(context)!.hopIn,
+                    style: const TextStyle(color: Colors.black)),
               )
             ],
           ),

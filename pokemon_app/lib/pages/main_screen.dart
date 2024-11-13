@@ -5,7 +5,7 @@ import 'package:pokemon_app/data/model/poke.dart';
 import 'package:pokemon_app/pages/widgets/list_widget.dart';
 import 'package:pokemon_app/pages/widgets/text_field.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   final List<PokeModel> pokemonList;
   final List<PokeModel> filtredPokemonList;
 
@@ -16,15 +16,29 @@ class MainScreen extends StatelessWidget {
   });
 
   @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
           TextFieldWidget(
             myHintText: 'bulbasaur',
-            onChange: (value) => searchPokemons(context, value, pokemonList),
+            onChange: (value) => searchPokemons(
+              context,
+              value,
+              widget.pokemonList,
+            ),
           ),
-          Expanded(child: ListWidget(pokemonList: filtredPokemonList)),
+          Expanded(child: ListWidget(pokemonList: widget.filtredPokemonList)),
         ],
       ),
     );

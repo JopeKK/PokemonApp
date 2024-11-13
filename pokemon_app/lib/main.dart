@@ -6,8 +6,9 @@ import 'package:pokemon_app/data/poke_repository.dart';
 import 'package:pokemon_app/pages/logic_page.dart';
 
 //Text(AppLocalizations.of(context)!.helloWorld);
-void main() {
+Future<void> main() async {
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
